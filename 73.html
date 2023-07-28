@@ -1,0 +1,65 @@
+<html>
+ <head>
+   <title>73rd program</title>
+   <style>
+    body {
+     text-align:center;
+     margin-top:50px;
+     background-color:#F9E79F;
+    }
+    p {
+     font-size:20px;
+     color:#85C1E9;
+    }
+    h2 {
+     font-size:30px;
+     color:#D35400;
+     text-decoration:underline #8E44AD;
+   }
+    button {
+     padding:7px 10px;
+     background-color:#58D68D;
+   }
+  </style>
+ </head>
+ <body>
+   <h2> alphabet count and max count in string</h2>
+   <p> Enter a string <input type="text" id="num"></p>
+   <button type="button" onClick="convert()"> delete</button>
+   <p>count <input id="output1"></p>
+   <p>max count <input id="output2"></p>
+   <script>
+      function convert() {
+            var inputString = document.getElementById("num").value;
+            var result = {};
+
+            // Remove non-alphabetic characters and convert to lowercase
+            inputString = inputString.replace(/[^a-zA-Z]/g, '').toLowerCase();
+
+            // Count occurrences of each alphabet
+            for (var i = 0; i < inputString.length; i++) {
+                var char = inputString.charAt(i);
+                if (result[char]) {
+                    result[char]++;
+                } else {
+                    result[char] = 1;
+                }
+            }
+
+            // Find the alphabet with maximum occurrence
+            var maxOccurrence = 0;
+            var maxAlphabet = '';
+            for (var alphabet in result) {
+                if (result[alphabet] > maxOccurrence) {
+                    maxOccurrence = result[alphabet];
+                    maxAlphabet = alphabet;
+                }
+            }
+
+            document.getElementById("output1").value = JSON.stringify(result);
+            document.getElementById("output2").value=("Alphabet with maximum occurrence: " + maxAlphabet + " (" + maxOccurrence + " occurrences)");
+        }
+    </script>
+  </body>
+ </html>
+      

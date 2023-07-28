@@ -1,0 +1,61 @@
+<html>
+<head>
+   <title>68th program</title>
+   <style>
+    body {
+     text-align: center;
+     margin-top: 50px;
+     background-color: #F9E79F;
+    }
+    p {
+     font-size: 20px;
+     color: #85C1E9;
+    }
+    h2 {
+     font-size: 30px;
+     color: #D35400;
+     text-decoration: underline #8E44AD;
+   }
+    button {
+     padding: 7px 10px;
+     background-color: #58D68D;
+   }
+  </style>
+</head>
+<body>
+   <h2>string valid or not</h2>
+   <p>Enter a string <input type="text" id="num"></p>
+   <button type="button" onClick="check()">check</button>
+   <p>Result <input id="output1" readonly></p>
+   <script>
+      function check() {
+            var str = document.getElementById("num").value;
+            var stack = [];
+            var result1 = "Valid";
+
+            for (var i = 0; i < str.length; i++) {
+                var char = str.charAt(i);
+
+                if (char === '(' || char === '{' || char === '[') {
+                    stack.push(char);
+                } else if (char === ')' || char === '}' || char === ']') {
+                    if (stack.length === 0 || !isMatchingPair(stack.pop(), char)) {
+                        result1 = "Not Valid";
+                        break;
+                    }
+                }
+            }
+
+            if (stack.length !== 0) {
+                result1 = "Not Valid";
+            }
+
+            document.getElementById("output1").value = result1;
+        }
+
+        function isMatchingPair(opening, closing) {
+            return (opening === '(' && closing === ')') || (opening === '{' && closing === '}') || (opening === '[' && closing === ']');
+        }
+   </script>
+</body>
+</html>

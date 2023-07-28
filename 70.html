@@ -1,0 +1,67 @@
+<html>
+ <head>
+   <title>70th program</title>
+   <style>
+    body {
+     text-align: center;
+     margin-top: 50px;
+     background-color: #F9E79F;
+    }
+    p {
+     font-size: 20px;
+     color: #85C1E9;
+    }
+    h2 {
+     font-size: 30px;
+     color: #D35400;
+     text-decoration: underline #8E44AD;
+   }
+    button {
+     padding: 7px 10px;
+     background-color: #58D68D;
+   }
+  </style>
+ </head>
+ <body>
+   <h2>Converting alphabets in string</h2>
+   <p>Enter a string <input type="text" id="num"></p>
+   <button type="button" onClick="convert()">Convert</button>
+   <p>Result <input id="output1"></p>
+   <script>
+      function convert() {
+         var str = document.getElementById("num").value;
+         var str1 = "";
+         var str2 = "";
+
+         for (var i = 0; i < str.length; i++){
+           if (str.charAt(i) === " ") {
+               str1 = str1.concat(" ");
+           }
+           else if (str.charAt(i) === "z") {
+              str1 = str1.concat("a");
+           }
+           else {
+             str1 = str1.concat(String.fromCharCode(str.charAt(i).charCodeAt(0) + 1));
+           }
+         }
+
+         for (var i = 0; i < str1.length; i++){ 
+            switch (str1.charAt(i)){
+             case "a":
+             case "e":
+             case "i":
+             case "o":
+             case "u":
+                str2 = str2 + str1.charAt(i).toUpperCase();
+                break;
+            default:
+                str2 = str2 + str1.charAt(i);
+                break; 
+           }
+        }
+
+        document.getElementById("output1").value = str2;
+      }
+   </script>
+  </body>
+ </html>
